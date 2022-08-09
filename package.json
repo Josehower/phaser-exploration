@@ -1,0 +1,59 @@
+{
+  "name": "phaser-3-exploration",
+  "version": "1.0.0",
+  "description": "my first app created with phaser 3",
+  "main": "index.js",
+  "author": "Jose Hower",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "serve-static": "mkdir dist/public/ && cp -R src/public/index.html dist/public/ ",
+    "build-frontend": "esbuild src/public/index.ts --bundle --outfile=dist/public/index.js",
+    "build": "rm -rf dist/ && esbuild src/index.ts --bundle --outfile=dist/index.mjs --platform=node --target=node16.8 --format=esm --banner:js=\"import { createRequire as topLevelCreateRequire } from 'module'; const require = topLevelCreateRequire(import.meta.url); import { dirname } from 'node:path'; import { fileURLToPath } from 'node:url'; const __filename = fileURLToPath(import.meta.url); const __dirname = dirname(__filename); \" && yarn serve-static && yarn build-frontend",
+    "dev": "nodemon --watch src -e \"ts, html\" --exec 'yarn build && node dist/index.mjs'",
+    "start": "node dist/index.mjs"
+  },
+  "dependencies": {
+    "@fastify/static": "^6.5.0",
+    "esbuild": "^0.14.54",
+    "fastify": "^4.4.0",
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "7.18.9",
+    "@next/eslint-plugin-next": "12.2.3",
+    "@types/node": "18.0.6",
+    "@types/react": "18.0.15",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "5.30.7",
+    "@typescript-eslint/parser": "5.30.7",
+    "@upleveled/eslint-config-upleveled": "2.12.4",
+    "@upleveled/eslint-plugin-upleveled": "2.1.5",
+    "eslint": "8.20.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-import-resolver-typescript": "3.3.0",
+    "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "26.6.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-security": "1.5.0",
+    "eslint-plugin-sonarjs": "0.14.0",
+    "eslint-plugin-testing-library": "5.5.1",
+    "eslint-plugin-unicorn": "43.0.2",
+    "nodemon": "^2.0.19",
+    "typescript": "4.7.4"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "5.30.7",
+    "@typescript-eslint/parser": "5.30.7",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "26.6.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "@typescript-eslint/utils": "5.30.7"
+  }
+}
