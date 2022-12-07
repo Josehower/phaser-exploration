@@ -23,28 +23,6 @@ app.get('/index.js', (x_req, response) => {
     .sendFile('index.js');
 });
 
-// app.route({
-//   method: 'GET',
-//   url: '/',
-//   schema: {
-//     querystring: {
-//       name: { type: 'string' },
-//       excitement: { type: 'integer' },
-//     },
-//     response: {
-//       200: {
-//         type: 'object',
-//         properties: {
-//           hello: { type: 'string' },
-//         },
-//       },
-//     },
-//   },
-//   handler: async function (request, reply) {
-//     await reply.send({ hello: 'world' });
-//   },
-// });
-
 interface Params {
   filename: string;
 }
