@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "serve-static": "mkdir dist/public/ && cp -R src/public/index.html dist/public/ ",
+    "serve-static": "mkdir dist/public/ && cp -R src/public/index.html dist/public/ && cp -R src/public/assets dist/public/assets",
     "build-frontend": "esbuild src/public/index.ts --bundle --outfile=dist/public/index.js",
     "build": "rm -rf dist/ && esbuild src/index.ts --bundle --outfile=dist/index.mjs --platform=node --target=node16.8 --format=esm --banner:js=\"import { createRequire as topLevelCreateRequire } from 'module'; const require = topLevelCreateRequire(import.meta.url); import { dirname } from 'node:path'; import { fileURLToPath } from 'node:url'; const __filename = fileURLToPath(import.meta.url); const __dirname = dirname(__filename); \" && yarn serve-static && yarn build-frontend",
     "dev": "nodemon --watch src -e \"ts, html\" --exec 'yarn build && node dist/index.mjs'",
